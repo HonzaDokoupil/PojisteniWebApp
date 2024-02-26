@@ -1,0 +1,177 @@
+﻿@model PojisteniWebApp.Models.Report
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">   
+        <div class="col-6"><h1>Aktuální statisktika</h1></div>
+    
+
+
+</div>
+ <div class="row">
+    <div class="col-6">
+        <dl class="row">
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.InsuranceTypesCount)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.InsuranceTypesCount
+            </dd>
+             <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.InsuredPersonsCount)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.InsuredPersonsCount
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.IndividualContractsCount)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.IndividualContractsCount
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.InsuranceEventsCount)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.InsuranceEventsCount
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.UsersCount)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.UsersCount
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.PersonsWithNoContractsCount)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.PersonsWithNoContractsCount
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.PersonsWithNoEventCount)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.PersonsWithNoEventCount
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.UseresWithNoRole)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.UseresWithNoRole
+            </dd>  
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.InsuredPersonsWithNoAccount)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.InsuredPersonsWithNoAccount
+            </dd> 
+        </dl>
+    </div>
+
+    <div class="col-6">
+        <dl class="row">
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.PersonWithHighestInsuredValueTotal)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.PersonWithHighestInsuredValueTotal
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.PersonWithLowestInsuredValueTotal)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.PersonWithLowestInsuredValueTotal
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.PersonWithHighestDamageValueTotal)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.PersonWithHighestDamageValueTotal
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.PersonWithLowestDamageValueTotal)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.PersonWithLowestDamageValueTotal
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.MostContractedInsurenceType)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.MostContractedInsurenceType
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.LeastContractedInsurenceType)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.LeastContractedInsurenceType
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.InsuredValueTotal)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.InsuredValueTotal.ToString("N") Kč
+            </dd> 
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.DamageValueTotal)
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.DamageValueTotal.ToString("N") Kč
+            </dd>
+            <dt class="col-sm-8">
+                Dnes je: 
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.ReportDate.ToShortDateString()
+            </dd>
+            <dt class="col-sm-8">
+                Přesný čas:
+            </dt>
+            <dd class="col-sm-4 text-end">
+                @ViewBag.Info.ReportDate.ToShortTimeString()
+            </dd>
+        </dl>
+    </div>
+</div>
+
+
+<form asp-action="Create">
+    <input type="hidden" asp-for="InsuranceTypesCount" value="@ViewBag.Info.InsuranceTypesCount" />
+    <input type="hidden" asp-for="InsuredPersonsCount" value="@ViewBag.Info.InsuredPersonsCount" />
+    <input type="hidden" asp-for="IndividualContractsCount" value="@ViewBag.Info.IndividualContractsCount" />
+    <input type="hidden" asp-for="InsuranceEventsCount" value="@ViewBag.Info.InsuranceEventsCount" />
+    <input type="hidden" asp-for="UsersCount" value="@ViewBag.Info.UsersCount" />
+    <input type="hidden" asp-for="InsuredValueTotal" value="@ViewBag.Info.InsuredValueTotal" />
+    <input type="hidden" asp-for="DamageValueTotal" value="@ViewBag.Info.DamageValueTotal" />
+    <input type="hidden" asp-for="PersonsWithNoContractsCount" value="@ViewBag.Info.PersonsWithNoContractsCount" />
+    <input type="hidden" asp-for="PersonsWithNoEventCount" value="@ViewBag.Info.PersonsWithNoEventCount" />
+    <input type="hidden" asp-for="UseresWithNoRole" value="@ViewBag.Info.UseresWithNoRole" />
+    <input type="hidden" asp-for="InsuredPersonsWithNoAccount" value="@ViewBag.Info.InsuredPersonsWithNoAccount" />
+    <input type="hidden" asp-for="PersonWithHighestInsuredValueTotal" value="@ViewBag.Info.PersonWithHighestInsuredValueTotal" />
+    <input type="hidden" asp-for="PersonWithLowestInsuredValueTotal" value="@ViewBag.Info.PersonWithLowestInsuredValueTotal" />
+    <input type="hidden" asp-for="PersonWithHighestDamageValueTotal" value="@ViewBag.Info.PersonWithHighestDamageValueTotal" />
+    <input type="hidden" asp-for="PersonWithLowestDamageValueTotal" value="@ViewBag.Info.PersonWithLowestDamageValueTotal" />
+	<input type="hidden" asp-for="MostContractedInsurenceType" value="@ViewBag.Info.MostContractedInsurenceType" />
+    <input type="hidden" asp-for="LeastContractedInsurenceType" value="@ViewBag.Info.LeastContractedInsurenceType" />
+    <input type="hidden" asp-for="ReportDate" value="@ViewBag.Info.ReportDate" />
+    <div class="form-group row my-3">
+        <div class="col-6">
+            <input type="submit" value="Uložit Report" class="btn btn-primary" />
+            <a class="btn btn-success" href="pdf/Statistika.pdf" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
+                </svg>PDF
+            </a>
+        </div>
+        <div class="col-sm-6 text-sm-end mt-sm-2">
+            <a asp-action="List" class="btn btn-info my-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search me-1" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>Zobrazit seznam reporů
+            </a>
+        </div>
+    </div>
+    
+</form>
+

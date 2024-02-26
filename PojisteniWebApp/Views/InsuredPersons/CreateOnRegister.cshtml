@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model PojisteniWebApp.Models.InsuredPerson
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "CreateOnRegister";
+}
+
+<h1>Vítá Vás vaše Pojištění</h1>
+
+<h4>Vyplňte prosím vaše údaje</h4>
+<hr />
+
+
+    <form asp-action="CreateOnRegister">
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-sm-6">
+            <label asp-for="FirstName" class="control-label my-1"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6">
+            <label asp-for="LastName" class="control-label my-1"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6">
+            <label asp-for="Email" class="control-label my-1"></label>
+                <input readonly asp-for="Email" class="form-control" value="@User.Identity.Name" />
+            </div>
+            <div class="col-sm-6">
+            <label asp-for="Phone" class="control-label my-1"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6">
+            <label asp-for="Adress" class="control-label my-1"></label>
+                <input asp-for="Adress" class="form-control" />
+                <span asp-validation-for="Adress" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6">
+            <label asp-for="City" class="control-label my-1"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6">
+            <label asp-for="PostalCode" class="control-label my-1"></label>
+                <input asp-for="PostalCode" class="form-control" />
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6">
+            <label asp-for="Status" class="control-label my-1"></label>
+            <select asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()" class="form-control">
+                    <option selected="selected" value="">Prosím vyberte z možností</option>
+                </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group row my-3">
+                <div class="col-sm-6">
+                <input type="submit" value="Vytvořit" class="btn btn-primary my-1" />
+                </div>
+		    </div>
+	    </div>
+    </form>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+

@@ -1,0 +1,151 @@
+﻿@using PojisteniWebApp.Controllers;
+@model PojisteniWebApp.Models.InsuredPerson
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Model.FirstName @Model.LastName</h1>
+
+<div>
+
+    <hr />
+    <div class="row">
+        <div class="col-6">
+
+            <dl class="row">
+                <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+                <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.FirstName)
+                </dd>
+                <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+                <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.LastName)
+                </dd>
+                <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+                <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Phone)
+                </dd>
+                <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.Adress)
+                </dt>
+                <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.Adress)
+                </dd>
+                <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.City)
+                </dt>
+                <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.City)
+                </dd>
+                <dt class = "col-sm-2">
+                        @Html.DisplayNameFor(model => model.PostalCode)
+                </dt>
+                <dd class = "col-sm-10">
+                        @Html.DisplayFor(model => model.PostalCode)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-6">
+
+            <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Sjednaná pojištění
+                            </th>
+                            <th>
+                                Částka
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var IndividualContract in ViewBag.IndividualContracts)
+                        {
+                                <tr>
+                                    <td>
+                                        @foreach (var type in ViewBag.InsuranceTypes)      
+                                        {                                                 
+                                            if (type.Id == IndividualContract.InsuranceTypeId)           
+                                            {                                             
+                                                @type.Title
+                                            }
+                                        }
+
+                                    </td>
+                                <td>
+                                    @IndividualContract.Value Kč
+                                </td>
+                                    <td class="text-end">
+                                <a asp-controller="IndividualContracts" asp-action="Edit" asp-route-id="@IndividualContract.Id" class="btn btn-sm btn-warning my-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square me-1" viewBox="0 0 16 16">
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                                    </svg>Upravit
+                                </a>
+                                <a asp-controller="IndividualContracts" asp-action="Details" asp-route-id="@IndividualContract.Id" class="btn btn-sm btn-info my-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search me-1" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                    </svg>Detail
+                                </a>
+                                <a asp-controller="IndividualContracts" asp-action="Delete" asp-route-id="@IndividualContract.Id" class="btn btn-sm btn-danger my-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill me-1" viewBox="0 0 16 16">
+                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                                    </svg>Smazat
+                                </a>
+
+                                    </td>
+                                </tr>                           
+                        }
+                    </tbody>
+            </table>
+        <div class="text-center">
+                <a asp-controller="IndividualContracts" asp-action="Create" asp-route-insuredPersonId="@Model.Id" class="btn btn-sm btn-success my-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle me-1" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                    </svg>Sjednat nové Pojištění
+                </a>
+		</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <a class="btn btn-warning my-1" asp-action="Edit" asp-route-id="@Model?.Id">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square me-1 me-1" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+            </svg>Upravit
+        </a>
+
+    </div>
+    <div class="col-6 text-end my-1">
+        <a class="btn btn-secondary" asp-action="Index">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backspace me-1" viewBox="0 0 16 16">
+                <path d="M5.83 5.146a.5.5 0 0 0 0 .708L7.975 8l-2.147 2.146a.5.5 0 0 0 .707.708l2.147-2.147 2.146 2.147a.5.5 0 0 0 .707-.708L9.39 8l2.146-2.146a.5.5 0 0 0-.707-.708L8.683 7.293 6.536 5.146a.5.5 0 0 0-.707 0z" />
+                <path d="M13.683 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7.08a2 2 0 0 1-1.519-.698L.241 8.65a1 1 0 0 1 0-1.302L5.084 1.7A2 2 0 0 1 6.603 1zm-7.08 1a1 1 0 0 0-.76.35L1 8l4.844 5.65a1 1 0 0 0 .759.35h7.08a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
+            </svg>Zpátky na seznam
+        </a>
+
+    </div>
+</div>
