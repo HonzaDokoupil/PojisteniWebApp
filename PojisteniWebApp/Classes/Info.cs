@@ -21,6 +21,10 @@ namespace PojisteniWebApp.Classes
         /// </summary>
         private const string missingData = "Pro tento údaj není v databázi dostatek dat";
         /// <summary>
+        /// databazový kontext
+        /// </summary>
+        private readonly ApplicationDbContext _dbContext = dbContext;
+        /// <summary>
         /// počet produktu
         /// </summary>
         public int InsuranceTypesCount { get => _dbContext.InsuranceTypes.Count(); }
@@ -167,12 +171,6 @@ namespace PojisteniWebApp.Classes
         /// datum reportu
         /// </summary>
         public DateTime ReportDate { get; private set; } = DateTime.Now;
-
-        /// <summary>
-        /// databazový kontext
-        /// </summary>
-        private readonly ApplicationDbContext _dbContext = dbContext;
-
         /// <summary>
         /// Získá produkt který od kterého není žadná smlouva
         /// </summary>

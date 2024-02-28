@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System.Collections;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PojisteniWebApp.Models
 {
@@ -10,7 +12,7 @@ namespace PojisteniWebApp.Models
         [Display(Name = "Pojistitel")]
         Policyholder
     }
-        public class InsuredPerson
+    public class InsuredPerson
     {
         [Key]
         public int Id { get; set; }
@@ -46,5 +48,12 @@ namespace PojisteniWebApp.Models
         [Required(ErrorMessage = "Vyberte prosím jednu z možností")]
         [DisplayName("Status")]
         public Status Status { get; set; }
+        [NotMapped]
+        public IEnumerable<IndividualContract> Contracts { get; set; }
+
+        public InsuredPerson()
+        {
+            Contracts = new List<IndividualContract>();
+        }
     }
 }

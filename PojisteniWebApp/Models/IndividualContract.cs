@@ -36,5 +36,12 @@ namespace PojisteniWebApp.Models
         [DisplayName("Pojištěnec")]
         [ValidateNever]
         public InsuredPerson? InsuredPerson { get; set; }
+        [NotMapped]
+        public IEnumerable<InsuranceEvent> Events { get; set; }
+
+        public IndividualContract()
+        {
+            Events = new List<InsuranceEvent>();
+        }
     }
 }

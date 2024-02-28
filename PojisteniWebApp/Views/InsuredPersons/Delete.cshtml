@@ -85,20 +85,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var IndividualContract in ViewBag.IndividualContracts)
+                    @foreach (var individualContract in Model.Contracts)
                     {
                         <tr>
                             <td>
-                                @foreach (var type in ViewBag.InsuranceTypes)
-                                {
-                                    if (type.Id == IndividualContract.InsuranceTypeId)
-                                    {
-                                        @type.Title
-                                    }
-                                }
+                                @individualContract.InsuranceType.Title
                             </td>
                             <td>
-                                @IndividualContract.Value
+                                @individualContract.Value
                             </td>
                         </tr>
                     }

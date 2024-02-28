@@ -37,7 +37,7 @@ namespace PojisteniWebApp.Controllers
             {
                 return NotFound();
             }	
-			ViewBag.InsuranceEvents = _dbContext.InsuranceEvents.Where(m => m.IndividualContractId == id);
+			individualContract.Events = _dbContext.InsuranceEvents.Where(m => m.IndividualContractId == id);
             return View(individualContract);
         }
 
@@ -169,6 +169,7 @@ namespace PojisteniWebApp.Controllers
             {
                 return NotFound();
             }
+            individualContract.Events = _dbContext.InsuranceEvents.Where(m => m.IndividualContractId == id);
             return View(individualContract);
         }
 
